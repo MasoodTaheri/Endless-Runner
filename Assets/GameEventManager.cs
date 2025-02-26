@@ -11,12 +11,10 @@ public class GameEventManager : MonoBehaviour
 
     public void AddScore(int points)
     {
-        Debug.Log("add score to game event manager"+points);
         OnScoreUpdated.Invoke(points);
     }
     public void AddStar(int points)
     {
-        Debug.Log("add star to game event manager"+points);
-        OnScoreUpdated.Invoke(points);
+        OnStarUpdated.Invoke(points);
     }
 }

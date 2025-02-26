@@ -13,10 +13,11 @@ public abstract class Collectable : MonoBehaviour, ICollectable
 
     public virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter " + gameObject.name);
+        
         //if (other.gameObject.tag == "Player")
         {
-            _gameEventManager.AddScore(score);
+            CollideHappening(other);
+            //_gameEventManager.AddScore(score);
             //particlePrefab;
             Destroy(gameObject);
         }

@@ -20,11 +20,11 @@ public class UIPresenter: MonoBehaviour
 
     private void UpdateStar(int arg0)
     {
-        StarCount = arg0;
+        StarCount += arg0;
     }
 
     private void UpdateScore(int arg0)
     {
-        coinCount = arg0;
+        coinCount += arg0;
     }
 }

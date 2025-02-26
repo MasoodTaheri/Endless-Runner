@@ -5,12 +5,13 @@ public class Bootstrap : MonoBehaviour
 {
     public GameEventManager gameEventManager;
     public UIPresenter uiPresenter;
-    [SerializeField] private List<GameObject> Collectables;
+    public LevelController levelController;
     [SerializeField] private GameObject player;
+
     public void Start()
     {
         uiPresenter.Initialize(gameEventManager);
-        foreach (var collectable in Collectables)
-            collectable.GetComponent<ICollectable>().SetGameEventManager(gameEventManager);
+        levelController.Initialize(gameEventManager);
+        player.SetActive(true);
     }
 }
