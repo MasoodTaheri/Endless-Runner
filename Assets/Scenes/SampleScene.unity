@@ -2250,6 +2250,7 @@ MonoBehaviour:
   uiPresenter: {fileID: 763162126}
   levelController: {fileID: 578292263}
   player: {fileID: 1638432862}
+  poolManager: {fileID: 2008958554}
 --- !u!4 &1817172253
 Transform:
   m_ObjectHideFlags: 0
@@ -2415,7 +2416,7 @@ GameObject:
   - component: {fileID: 2008958553}
   - component: {fileID: 2008958554}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

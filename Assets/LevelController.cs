@@ -38,6 +38,7 @@ public class LevelController : MonoBehaviour, ILevelController
 
     public void LevelChunkFinished(LevelChunkController obj)
     {
+        obj.Release();
         Chunks.Remove(obj);
         Destroy(obj.gameObject,1);
     }
@@ -51,13 +52,13 @@ public class LevelController : MonoBehaviour, ILevelController
             var chunk = Instantiate(LevelPrefabs[0]);
             chunk._levelconreController = this;
             chunk.gameObject.name="chunck"+chunckIndex++;
-            chunk.Initialize(_gameEventManager);
+            
             if (Chunks.Count == 0)
                 lastChuncPos = FirstChuncPos.position;
             else
                 lastChuncPos += new Vector3(0,0,LevelChuncLength);
-
             chunk.transform.position = lastChuncPos;
+            chunk.Initialize(_gameEventManager,_poolManager);
             Chunks.Add(chunk);
         }
     }

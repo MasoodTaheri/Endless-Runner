@@ -29,14 +29,15 @@ public class PoolManager : MonoBehaviour
             actionOnRelease: OnBuildingRelease,
             actionOnDestroy: OnBuildingDestroy,
             defaultCapacity: 10,
-            maxSize: 20
+            maxSize: 80
         );
     }
 
-
+    private int buildingId = 0;
     private GameObject CreateBuilding()
     {
         GameObject obj = Instantiate(_buildingPrefab);
+        obj.name = "Building"+buildingId++;
         obj.gameObject.SetActive(false);
         return obj;
     }
@@ -58,15 +59,14 @@ public class PoolManager : MonoBehaviour
         Destroy(building.gameObject);
     }
 
-    
-    public void GetBuilding(Vector3 position)
+
+    public GameObject GetBuilding()
     {
-        GameObject bullet = BuildingPool.Get();
-        bullet.transform.position = position;
-        bullet.transform.rotation = Quaternion.identity;
+        GameObject building = BuildingPool.Get();
+        return building;
     }
 
-    
+
     public void ReturnBuilding(GameObject building)
     {
         BuildingPool.Release(building);
