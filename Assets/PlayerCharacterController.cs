@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-public class CharacterController : MonoBehaviour
+public class PlayerCharacterController : MonoBehaviour
 {
     public Rigidbody rb;
     public float Speed;
     public bool switchLane;
     public Vector3 currentSpeed;
     public Vector3 targetpos;
+    private bool isGameFinished = false;
 
     public Vector3[] Lane = new Vector3[3]
     {
@@ -23,34 +20,56 @@ public class CharacterController : MonoBehaviour
 
     public float laneSwitchSpeed;
     public Vector3 jumpForce;
+    [SerializeField] private SwipeDetection swipeDetection;
+    private GameEventManager _gameEventManager;
 
     public void Start()
     {
         //Physics.gravity = new Vector3(0f, -9.81f, 0f);
         Physics.gravity = new Vector3(0f, -9.81f * 2, 0f);
+        swipeDetection.OnLeft = SwipeLeft;
+        swipeDetection.OnRight = SwipeRight;
+        _gameEventManager.OnGameFinished.AddListener(() =>
+        {
+            Debug.Log("Game finished");
+            isGameFinished = true;
+            rb.velocity=Vector3.zero;
+        });
+    }
+
+    private void SwipeRight()
+    {
+        if (currentLane + 1 <= 2)
+        {
+            currentLane += 1;
+            switchLane = true;
+        }
+    }
+
+    private void SwipeLeft()
+    {
+        if (currentLane - 1 >= 0)
+        {
+            currentLane -= 1;
+            switchLane = true;
+        }
     }
 
     public void Update()
     {
+        if (isGameFinished)
+            return;
         if (switchLane)
             return;
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentLane - 1 >= 0)
-            {
-                currentLane -= 1;
-                switchLane = true;
-            }
-        }
+        /*  if (Input.GetKeyDown(KeyCode.LeftArrow))
+          {
+             SwipeLeft();
+          }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (currentLane + 1 <= 2)
-            {
-                currentLane += 1;
-                switchLane = true;
-            }
-        }
+          if (Input.GetKeyDown(KeyCode.RightArrow))
+          {
+            SwipeRight();
+          }*/
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -59,11 +78,12 @@ public class CharacterController : MonoBehaviour
     }
 
     public void FixedUpdate()
-    {
+    {  
+        if (isGameFinished)
+            return;
         //rb.MovePosition(rb.position + Vector3.up * Time.deltaTime);
         //rb.AddForce(transform.forward * Speed, ForceMode.VelocityChange);
         rb.velocity = transform.forward * Speed + new Vector3(0, rb.velocity.y, 0);
-        ;
         currentSpeed = rb.velocity;
         if (switchLane)
         {
@@ -77,5 +97,10 @@ public class CharacterController : MonoBehaviour
                 //rb.MovePosition(rb.position + Lane[currentLane]);
             }
         }
+    }
+
+    public void Initialize(GameEventManager gameEventManager)
+    {
+        _gameEventManager = gameEventManager;
     }
 }
