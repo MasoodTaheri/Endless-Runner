@@ -34,7 +34,7 @@ public class CharacterController : MonoBehaviour
     {
         if (switchLane)
             return;
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (currentLane - 1 >= 0)
             {
@@ -43,7 +43,7 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (currentLane + 1 <= 2)
             {
@@ -69,7 +69,7 @@ public class CharacterController : MonoBehaviour
         {
             rb.MovePosition(Vector3.Lerp(rb.position, new Vector3(Lane[currentLane].x, rb.position.y, rb.position.z),
                 laneSwitchSpeed * Time.fixedDeltaTime));
-            Debug.Log(Mathf.Abs(rb.position.x - Lane[currentLane].x));
+            //Debug.Log(Mathf.Abs(rb.position.x - Lane[currentLane].x));
             if (Mathf.Abs(rb.position.x - Lane[currentLane].x) < 0.2f)
             {
                 switchLane = false;
