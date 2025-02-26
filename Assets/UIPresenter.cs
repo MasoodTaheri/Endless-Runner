@@ -5,8 +5,7 @@ public class UIPresenter: MonoBehaviour
     private UIModel _uiModel;
     [SerializeField] private UIView _uiView;
     private GameEventManager _gameEventManager;
-    public int coinCount;
-    public int StarCount;
+
 
     public void Initialize(GameEventManager gameEventManager)
     {
@@ -14,17 +13,19 @@ public class UIPresenter: MonoBehaviour
         _uiView.UpdateUI(_uiModel);
         this._gameEventManager = gameEventManager;
         
-        gameEventManager.OnScoreUpdated.AddListener(UpdateScore);
+        gameEventManager.OnScoreUpdated.AddListener(UpdateCoin);
         gameEventManager.OnStarUpdated.AddListener(UpdateStar);
     }
 
     private void UpdateStar(int arg0)
     {
-        StarCount += arg0;
+        _uiModel.AddStar(arg0);
+        _uiView.UpdateUI(_uiModel);
     }
 
-    private void UpdateScore(int arg0)
+    private void UpdateCoin(int arg0)
     {
-        coinCount += arg0;
+        _uiModel.AddCoin(arg0);
+        _uiView.UpdateUI(_uiModel);
     }
 }
