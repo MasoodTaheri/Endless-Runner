@@ -16,3 +16,5 @@ MonoBehaviour:
   BuildingPrefab: {fileID: 1220290745828526807, guid: 6bbe5d464edbba244a216b1f9d8f668f, type: 3}
   CoinPrefab: {fileID: 3818859254547912009, guid: 19ecacb28ea79b640aa645a2d0051d06, type: 3}
   StarPrefab: {fileID: 7235987802644617788, guid: df11b8c2e3df59245bedcef041753cb5, type: 3}
+  ObstaclePrefab: {fileID: 1276948484363482778, guid: 602fa8677e246254192a51b0d39f2744, type: 3}
+  LongObstaclePrefab: {fileID: 1091999322805404806, guid: b0331b6ecdce4e643aa2c4db3ba24ecd, type: 3}

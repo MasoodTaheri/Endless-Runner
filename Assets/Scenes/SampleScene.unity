@@ -522,7 +522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.35620117, y: 0.3562}
+  m_AnchoredPosition: {x: -0.35620117, y: 0.35620117}
   m_SizeDelta: {x: -30.6343, y: -53.432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400359782
@@ -685,13 +685,15 @@ GameObject:
   - component: {fileID: 618313243}
   - component: {fileID: 618313245}
   - component: {fileID: 618313244}
+  - component: {fileID: 618313247}
+  - component: {fileID: 618313246}
   m_Layer: 5
   m_Name: EndGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &618313243
 RectTransform:
   m_ObjectHideFlags: 0
@@ -751,6 +753,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618313242}
   m_CullTransparentMesh: 1
+--- !u!114 &618313246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618313242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba62e59a74084ffa8a2eddc63343e509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Score: {fileID: 318461734}
+  _restartButton: {fileID: 1320040585}
+  _scoreValue: 0
+  scoreChangeDuration: 2
+  scaleEffectStrength: 1.2
+  scaleEffectDuration: 0.2
+--- !u!114 &618313247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618313242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d68083b11b146347831b47eb700eede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 618313246}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiView: {fileID: 763162127}
+  _endGameController: {fileID: 618313247}
 --- !u!114 &763162127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,6 +1161,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnStarUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameFinished:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &894413331

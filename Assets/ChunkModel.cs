@@ -7,4 +7,6 @@ public class ChunkModel : ScriptableObject
     public GameObject BuildingPrefab;
     public Coin CoinPrefab;
     public Star StarPrefab;
+    public ObstacleController ObstaclePrefab;
+    public ObstacleController LongObstaclePrefab;
 }

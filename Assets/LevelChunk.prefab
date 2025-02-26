@@ -6260,7 +6260,7 @@ GameObject:
   - component: {fileID: 1890449916239412561}
   - component: {fileID: 8850731116000743759}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6767,7 +6767,7 @@ GameObject:
   - component: {fileID: 2515501802068421926}
   - component: {fileID: 4457822818862277551}
   m_Layer: 0
-  m_Name: Cube (8)
+  m_Name: LongObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

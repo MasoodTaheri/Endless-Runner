@@ -20,10 +20,10 @@ public class LevelChunkView : MonoBehaviour
             obj.SetActive(false);
         foreach (var obj in CoinPositions)
             obj.SetActive(false);
-        // foreach (var obj in ObstaclePositions)
-        //     obj.SetActive(false);
-        // foreach (var obj in LongObstaclePositions)
-        //     obj.SetActive(false);
+         foreach (var obj in ObstaclePositions)
+             obj.SetActive(false);
+         foreach (var obj in LongObstaclePositions)
+             obj.SetActive(false);
     }
 
     public void Initialize(GameEventManager gameEventManager)
@@ -58,6 +58,27 @@ public class LevelChunkView : MonoBehaviour
         {
             var obj = Instantiate(coinObject,
                 CoinPositions[i].transform.position, Quaternion.identity);
+            obj.transform.SetParent(this.transform);
+            obj.SetGameEventManager(_gameEventManager);
+        }
+    }
+
+    public void ShowObstacles(ObstacleController obstacleObject)
+    {
+        for (int i = 0; i < ObstaclePositions.Count; i++)
+        {
+            var obj = Instantiate(obstacleObject,
+                ObstaclePositions[i].transform.position, Quaternion.identity);
+            obj.transform.SetParent(this.transform);
+            obj.SetGameEventManager(_gameEventManager);
+        }
+    }
+    public void ShowLongObstacles(ObstacleController obstacleObject)
+    {
+        for (int i = 0; i < LongObstaclePositions.Count; i++)
+        {
+            var obj = Instantiate(obstacleObject,
+                LongObstaclePositions[i].transform.position, Quaternion.identity);
             obj.transform.SetParent(this.transform);
             obj.SetGameEventManager(_gameEventManager);
         }

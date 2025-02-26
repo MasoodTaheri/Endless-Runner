@@ -23,5 +23,7 @@ public class LevelChunkController : MonoBehaviour
         levelChunkView.ShowBuilding(_model.BuildingCount, _model.BuildingPrefab);
         levelChunkView.ShowCoins( _model.CoinPrefab);
         levelChunkView.ShowStars(_model.StarPrefab);
+        levelChunkView.ShowObstacles(_model.ObstaclePrefab);
+        levelChunkView.ShowLongObstacles(_model.LongObstaclePrefab);
     }
 }

@@ -17,6 +17,7 @@ public class UIPresenter : MonoBehaviour
 
         _gameEventManager.OnScoreUpdated.AddListener(UpdateCoin);
         _gameEventManager.OnStarUpdated.AddListener(UpdateStar);
+        _gameEventManager.OnGameFinished.AddListener(ShowEndGamePanel);
     }
 
     private void UpdateStar(int arg0)
