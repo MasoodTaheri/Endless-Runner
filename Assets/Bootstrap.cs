@@ -7,11 +7,12 @@ public class Bootstrap : MonoBehaviour
     public UIPresenter uiPresenter;
     public LevelController levelController;
     [SerializeField] private PlayerCharacterController player;
-
+    [SerializeField] private PoolManager poolManager;
+    
     public void Start()
     {
         uiPresenter.Initialize(gameEventManager);
-        levelController.Initialize(gameEventManager);
+        levelController.Initialize(gameEventManager,poolManager);
         player.Initialize(gameEventManager);
         player.gameObject.SetActive(true);
     }

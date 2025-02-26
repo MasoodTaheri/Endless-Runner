@@ -26,11 +26,14 @@ public class LevelController : MonoBehaviour, ILevelController
     private int chunckIndex=0;
     private GameEventManager _gameEventManager;
     private bool _isInitialized;
+    private PoolManager _poolManager;
 
-    public void Initialize(GameEventManager gameEventManager)
+    public void Initialize(GameEventManager gameEventManager
+    ,PoolManager poolManager)
     {
         _isInitialized=true;
         _gameEventManager = gameEventManager;
+        _poolManager = poolManager;
     }
 
     public void LevelChunkFinished(LevelChunkController obj)
