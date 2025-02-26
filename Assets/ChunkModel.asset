@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcd671b833f4887b77377da19f74604, type: 3}
+  m_Name: ChunkModel
+  m_EditorClassIdentifier: 
+  BuildingCount: 20
+  BuildingPrefab: {fileID: 1220290745828526807, guid: 6bbe5d464edbba244a216b1f9d8f668f, type: 3}
+  CoinPrefab: {fileID: 3818859254547912009, guid: 19ecacb28ea79b640aa645a2d0051d06, type: 3}
+  StarPrefab: {fileID: 7235987802644617788, guid: df11b8c2e3df59245bedcef041753cb5, type: 3}
