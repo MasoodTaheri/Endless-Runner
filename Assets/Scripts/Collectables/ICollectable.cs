@@ -1,4 +1,9 @@
-public interface ICollectable
+using PoolingSystem;
+
+namespace Collectables
 {
-    public void SetGameEventManager(GameEventManager manager,PoolManager poolManager);
+    public interface ICollectable
+    {
+        public void SetGameEventManager(GameEventManager manager,PoolManager poolManager);
+    }
 }

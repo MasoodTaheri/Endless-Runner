@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class ObstacleController : MonoBehaviour
+namespace Collectables
 {
-    protected GameEventManager _gameEventManager;
-
-    public void SetGameEventManager(GameEventManager manager)
+    public class ObstacleController : MonoBehaviour
     {
-        _gameEventManager = manager;
-    }
+        protected GameEventManager _gameEventManager;
 
-    private void OnCollisionEnter(Collision other)
-    {
-        _gameEventManager.GameFinished();
+        public void SetGameEventManager(GameEventManager manager)
+        {
+            _gameEventManager = manager;
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            _gameEventManager.GameFinished();
+        }
     }
 }

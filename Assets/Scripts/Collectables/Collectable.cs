@@ -1,30 +1,29 @@
+using PoolingSystem;
 using UnityEngine;
 
-public abstract class Collectable : MonoBehaviour, ICollectable
+namespace Collectables
 {
-    public int score;
-    public GameObject particlePrefab;
-    protected GameEventManager _gameEventManager;
-    protected PoolManager _poolManager;
-
-    public void SetGameEventManager(GameEventManager manager,PoolManager poolManager)
+    public abstract class Collectable : MonoBehaviour, ICollectable
     {
-        _gameEventManager = manager;
-        _poolManager = poolManager;
-    }
+        public int score;
+        public GameObject particlePrefab;
+        protected GameEventManager _gameEventManager;
+        protected PoolManager _poolManager;
 
-    public virtual void OnTriggerEnter(Collider other)
-    {
-        
-        //if (other.gameObject.tag == "Player")
+        public void SetGameEventManager(GameEventManager manager,PoolManager poolManager)
         {
-            CollideHappening(other);
-            //_gameEventManager.AddScore(score);
-            //particlePrefab;
-            //Destroy(gameObject);
-            
+            _gameEventManager = manager;
+            _poolManager = poolManager;
         }
-    }
 
-    public abstract void CollideHappening(Collider other);
+        public virtual void OnTriggerEnter(Collider other)
+        {
+            //if (other.gameObject.tag == "Player")
+            {
+                CollideHappening(other);
+            }
+        }
+
+        public abstract void CollideHappening(Collider other);
+    }
 }

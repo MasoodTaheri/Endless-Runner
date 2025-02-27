@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 
-public class EndlChunc:MonoBehaviour
+namespace Chunk
 {
-    public Action OnEndlChunk;
-
-    public void OnTriggerEnter(Collider other)
+    public class EndlChunc:MonoBehaviour
     {
-        OnEndlChunk?.Invoke();
+        public Action OnEndlChunk;
+
+        public void OnTriggerEnter(Collider other)
+        {
+            OnEndlChunk?.Invoke();
+        }
     }
 }

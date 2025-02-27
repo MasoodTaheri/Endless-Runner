@@ -1,63 +1,58 @@
 using System;
 using UnityEngine;
 
-public class SwipeDetection : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private float swipeThreshold = 50f; // Minimum distance for a swipe
-    private Vector2 _startTouchPosition; // Mouse position when swipe starts
-    private bool _isSwiping = false; // Track if a swipe is in progress
-    public Action OnLeft;
-    public Action OnRight;
-
-    void Update()
+    public class SwipeDetection : MonoBehaviour
     {
-        DetectSwipe();
-    }
+        public Action OnLeft;
+        public Action OnRight;
+        [SerializeField] private float swipeThreshold = 50f;
+        private Vector2 _startTouchPosition;
+        private bool _isSwiping = false;
 
-    void DetectSwipe()
-    {
-        // Swipe starts when the mouse button is pressed
-        if (Input.GetMouseButtonDown(0))
+        void Update()
         {
-            _startTouchPosition = Input.mousePosition;
-            _isSwiping = true;
+            DetectSwipe();
         }
 
-        // Swipe ends when the mouse button is released
-        if (Input.GetMouseButtonUp(0) && _isSwiping)
+        void DetectSwipe()
         {
-            Vector2 endTouchPosition = Input.mousePosition;
-            Vector2 swipeDelta = endTouchPosition - _startTouchPosition;
-
-            // Check if the swipe distance is greater than the threshold
-            if (swipeDelta.magnitude > swipeThreshold)
+            if (Input.GetMouseButtonDown(0))
             {
-                // Determine swipe direction
-                if (swipeDelta.x > 0)
-                {
-                    OnSwipeRight();
-                }
-                else if (swipeDelta.x < 0)
-                {
-                    OnSwipeLeft();
-                }
+                _startTouchPosition = Input.mousePosition;
+                _isSwiping = true;
             }
 
-            _isSwiping = false;
+            if (Input.GetMouseButtonUp(0) && _isSwiping)
+            {
+                Vector2 endTouchPosition = Input.mousePosition;
+                Vector2 swipeDelta = endTouchPosition - _startTouchPosition;
+
+                if (swipeDelta.magnitude > swipeThreshold)
+                {
+                    if (swipeDelta.x > 0)
+                    {
+                        OnSwipeRight();
+                    }
+                    else if (swipeDelta.x < 0)
+                    {
+                        OnSwipeLeft();
+                    }
+                }
+
+                _isSwiping = false;
+            }
         }
-    }
 
-    void OnSwipeLeft()
-    {
-        Debug.Log("Swiped Left");
-        // Call your lane-switching logic here
-        OnLeft?.Invoke();
-    }
+        void OnSwipeLeft()
+        {
+            OnLeft?.Invoke();
+        }
 
-    void OnSwipeRight()
-    {
-        Debug.Log("Swiped Right");
-        // Call your lane-switching logic here
-        OnRight?.Invoke();
+        void OnSwipeRight()
+        {
+            OnRight?.Invoke();
+        }
     }
 }

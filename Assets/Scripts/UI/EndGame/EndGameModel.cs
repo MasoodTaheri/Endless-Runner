@@ -1,7 +1,10 @@
 using System;
 
-public class EndGameModel
+namespace UI.EndGame
 {
-    public int score;
-    public Action Restart;
+    public class EndGameModel
+    {
+        public int score;
+        public Action Restart;
+    }
 }

@@ -1,14 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Coin : Collectable
+namespace Collectables
 {
-    public override void CollideHappening(Collider other)
+    public class Coin : Collectable
     {
-        _gameEventManager.AddScore(score);
-        _poolManager.CoinsPoolManager.ReturnToPool(this.gameObject);
+        public override void CollideHappening(Collider other)
+        {
+            _gameEventManager.AddScore(score);
+            _poolManager.CoinsPoolManager.ReturnToPool(this.gameObject);
+        }
     }
 }

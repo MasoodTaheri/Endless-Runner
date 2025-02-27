@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class Star : Collectable
+namespace Collectables
 {
-    public GameObject uiprefab;
-
-    public override void CollideHappening(Collider other)
+    public class Star : Collectable
     {
-        _gameEventManager.AddStar(score);
-        _poolManager.StarsPoolManager.ReturnToPool(this.gameObject);
+        public GameObject uiprefab;
+
+        public override void CollideHappening(Collider other)
+        {
+            _gameEventManager.AddStar(score);
+            _poolManager.StarsPoolManager.ReturnToPool(this.gameObject);
+        }
     }
 }
