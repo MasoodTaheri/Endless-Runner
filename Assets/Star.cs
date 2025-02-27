@@ -7,5 +7,6 @@ public class Star : Collectable
     public override void CollideHappening(Collider other)
     {
         _gameEventManager.AddStar(score);
+        _poolManager.StarsPoolManager.ReturnToPool(this.gameObject);
     }
 }

@@ -1,4 +1,4 @@
 public interface ICollectable
 {
-    public void SetGameEventManager(GameEventManager manager);
+    public void SetGameEventManager(GameEventManager manager,PoolManager poolManager);
 }

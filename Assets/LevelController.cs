@@ -20,18 +20,18 @@ public class LevelController : MonoBehaviour, ILevelController
     public float LevelChuncLength;
     public int ChuncReadyCount;
     public List<LevelChunkController> LevelPrefabs;
-    private List<LevelChunkController> Chunks=new List<LevelChunkController>();
+    private List<LevelChunkController> Chunks = new List<LevelChunkController>();
     public Transform FirstChuncPos;
     private Vector3 lastChuncPos;
-    private int chunckIndex=0;
+    private int chunckIndex = 0;
     private GameEventManager _gameEventManager;
     private bool _isInitialized;
     private PoolManager _poolManager;
 
     public void Initialize(GameEventManager gameEventManager
-    ,PoolManager poolManager)
+        , PoolManager poolManager)
     {
-        _isInitialized=true;
+        _isInitialized = true;
         _gameEventManager = gameEventManager;
         _poolManager = poolManager;
     }
@@ -40,7 +40,7 @@ public class LevelController : MonoBehaviour, ILevelController
     {
         obj.Release();
         Chunks.Remove(obj);
-        Destroy(obj.gameObject,1);
+        Destroy(obj.gameObject, 1);
     }
 
     private void Update()
@@ -51,17 +51,15 @@ public class LevelController : MonoBehaviour, ILevelController
         {
             var chunk = Instantiate(LevelPrefabs[0]);
             chunk._levelconreController = this;
-            chunk.gameObject.name="chunck"+chunckIndex++;
-            
+            chunk.gameObject.name = "chunck" + chunckIndex++;
+
             if (Chunks.Count == 0)
                 lastChuncPos = FirstChuncPos.position;
             else
-                lastChuncPos += new Vector3(0,0,LevelChuncLength);
+                lastChuncPos += new Vector3(0, 0, LevelChuncLength);
             chunk.transform.position = lastChuncPos;
-            chunk.Initialize(_gameEventManager,_poolManager);
+            chunk.Initialize(_gameEventManager, _poolManager);
             Chunks.Add(chunk);
         }
     }
-    
-    
 }

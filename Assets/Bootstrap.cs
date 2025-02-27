@@ -11,6 +11,7 @@ public class Bootstrap : MonoBehaviour
     
     public void Start()
     {
+        poolManager.Initialize();
         uiPresenter.Initialize(gameEventManager);
         levelController.Initialize(gameEventManager,poolManager);
         player.Initialize(gameEventManager);

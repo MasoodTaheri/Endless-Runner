@@ -5,10 +5,12 @@ public abstract class Collectable : MonoBehaviour, ICollectable
     public int score;
     public GameObject particlePrefab;
     protected GameEventManager _gameEventManager;
+    protected PoolManager _poolManager;
 
-    public void SetGameEventManager(GameEventManager manager)
+    public void SetGameEventManager(GameEventManager manager,PoolManager poolManager)
     {
         _gameEventManager = manager;
+        _poolManager = poolManager;
     }
 
     public virtual void OnTriggerEnter(Collider other)
@@ -19,7 +21,8 @@ public abstract class Collectable : MonoBehaviour, ICollectable
             CollideHappening(other);
             //_gameEventManager.AddScore(score);
             //particlePrefab;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            
         }
     }
 
