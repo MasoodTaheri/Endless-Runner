@@ -4,11 +4,13 @@ using UnityEngine;
 public class PlayerCharacterController : MonoBehaviour
 {
     public Rigidbody rb;
+    public Animator _animator;
     public float Speed;
     public bool switchLane;
     public Vector3 currentSpeed;
-    public Vector3 targetpos;
-    private bool isGameFinished = false;
+    public int currentLane;
+    public float laneSwitchSpeed;
+    public Vector3 jumpForce;
 
     public Vector3[] Lane = new Vector3[3]
     {
@@ -17,12 +19,9 @@ public class PlayerCharacterController : MonoBehaviour
         new Vector3(3f, 0f, 0f)
     };
 
-    public int currentLane;
-
-    public float laneSwitchSpeed;
-    public Vector3 jumpForce;
     [SerializeField] private SwipeDetection swipeDetection;
     private GameEventManager _gameEventManager;
+    private bool isGameFinished = false;
 
     public void Start()
     {
@@ -44,6 +43,7 @@ public class PlayerCharacterController : MonoBehaviour
         {
             currentLane += 1;
             switchLane = true;
+            _animator.SetTrigger("SwipeRight");
         }
     }
 
@@ -53,6 +53,7 @@ public class PlayerCharacterController : MonoBehaviour
         {
             currentLane -= 1;
             switchLane = true;
+            _animator.SetTrigger("SwipeLeft");
         }
     }
 
@@ -75,6 +76,7 @@ public class PlayerCharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(jumpForce, ForceMode.Impulse);
+            _animator.SetTrigger("Jump");
         }
     }
 
